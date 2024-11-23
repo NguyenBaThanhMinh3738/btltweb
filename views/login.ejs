@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Đăng nhập vào Smart Home</h1>
+
+        <!-- Hiển thị thông báo lỗi nếu có -->
+        <% if (typeof error !== 'undefined') { %>
+            <div style="color: red; font-size: 16px; margin-bottom: 15px;">
+                <%= error %>
+            </div>
+        <% } %>
+
+        <form action="/login" method="POST">
+            <div class="input-group">
+                <label for="username">Tài khoản:</label>
+                <input type="text" name="username" id="username" required placeholder="Nhập tên tài khoản">
+            </div>
+            <div class="input-group">
+                <label for="password">Mật khẩu:</label>
+                <input type="password" name="password" id="password" required placeholder="Nhập mật khẩu">
+            </div>
+            <button type="submit" class="login-btn">Đăng nhập</button>
+        </form>
+    </div>
+</body>
+</html>

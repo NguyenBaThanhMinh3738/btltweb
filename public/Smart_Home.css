@@ -1,0 +1,233 @@
+body {
+  background-color: rgb(27, 11, 126);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header h1 {
+  margin: 25px auto;
+  color: white;
+  font-size: 35px;
+}
+
+.main-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #1b0b7e;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 15px;
+  font-size: 16px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.sidebar button:hover {
+  background-color: #1769aa;
+}
+
+.sidebar button.active {
+  background-color: #1769aa;
+  font-weight: bold;
+  box-shadow: 0 0 10px #1769aa;
+}
+
+.logo {
+  position: absolute; /* Vị trí cố định ở góc trên cùng */
+  top: 20px; /* Cách cạnh trên 20px */
+  left: 50px; /* Cách cạnh trái 50px */
+  z-index: 100; /* Đảm bảo logo luôn nổi trên các thành phần khác */
+}
+
+.logo img {
+  width: 50px; /* Chiều rộng của logo */
+  height: auto; /* Tự động điều chỉnh chiều cao để giữ tỉ lệ */
+  border-radius: 5px; /* Bo góc nhẹ nếu cần */
+}
+
+.dashboard {
+  flex: 1;
+  padding: 20px;
+  background-color: rgb(240, 240, 240);
+  background-image: url('images/bk_background.jpg');
+  background-size: cover; /* Đảm bảo ảnh phủ toàn bộ */
+  background-repeat: no-repeat; /* Không lặp lại ảnh */
+  background-position: center center; /* Căn giữa ảnh nền */
+}
+
+.home-btn {
+  display: none;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #2196F3;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.home-btn:hover {
+  background-color: #1769aa;
+}
+
+.dashboard.active .home-btn {
+  display: block;
+}
+
+.box1 {
+  width: 300px;
+  height: 250px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px gray;
+  padding: 10px 20px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.box1 h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.datetime {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.datetime p {
+  margin: 0 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.temp {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.temp div {
+  text-align: center;
+}
+
+.temp strong {
+  font-size: 24px;
+  color: #2196F3;
+}
+
+.devices {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.box {
+  width: 150px;
+  height: 150px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px gray;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.box img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+.box p {
+  font-size: 16px;
+  margin: 5px 0;
+  text-align: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
