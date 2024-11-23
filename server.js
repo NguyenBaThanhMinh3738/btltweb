@@ -3,8 +3,10 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const session = require('express-session');
 
+
 const app = express();
 const port = 3000;
+
 
 // Middleware để parse dữ liệu từ form
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -48,12 +50,15 @@ app.post('/login', (req, res) => {
 
 // Route cho trang chủ sau khi đăng nhập
 app.get('/home', (req, res) => {
-    
+    let data123 ={
+        "humi":90,
+        "temp":30
+    }
     // Kiểm tra session để đảm bảo người dùng đã đăng nhập
     if (req.session.user) {
         // Chuyển hướng tới index.html từ thư mục public sau khi đăng nhập thành công
         // res.sendFile(path.join(__dirname, 'public', 'index.ejs'));  // Chuyển hướng đến index.html sau khi đăng nhập
-        res.render(path.join(__dirname, 'public', 'index.ejs'))
+        res.render(path.join(__dirname, 'public', 'index.ejs'),{data:data123})
     } else {
         res.redirect('/login');  // Nếu chưa đăng nhập, chuyển hướng về trang đăng nhập
     }
