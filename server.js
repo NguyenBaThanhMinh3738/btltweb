@@ -33,6 +33,16 @@ app.get('/login', (req, res) => {
     res.render('login');
 });
 
+// Route cho trang register
+app.get('/register', (req, res) => {
+    res.render('register');
+});
+
+// Route cho trang forgot password
+app.get('/forgot-password', (req, res) => {
+    res.render('forgot-password');
+});
+
 // Xử lý form đăng nhập
 app.post('/login', (req, res) => {
     const { username, password } = req.body;

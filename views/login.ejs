@@ -16,7 +16,8 @@
                 <%= error %>
             </div>
         <% } %>
-
+    <!-- thẻ <form> cùng với hai thuộc tính là action và method 
+    để dữ liệu được gửi đi một cách an toàn trên trình duyệt-->
         <form action="/login" method="POST">
             <div class="input-group">
                 <label for="username">Tài khoản:</label>
@@ -24,10 +25,23 @@
             </div>
             <div class="input-group">
                 <label for="password">Mật khẩu:</label>
-                <input type="password" name="password" id="password" required placeholder="Nhập mật khẩu">
+                <input type="password" name="password" id="password" required placeholder="Nhập mật khẩu">                                                            
             </div>
-            <button type="submit" class="login-btn">Đăng nhập</button>
+            <div class="input-group">
+                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <input type="checkbox" name="rememberMe" id="rememberMe">
+                        <label for="rememberMe" style="font-size: 0.8em; white-space: nowrap;">Ghi nhớ thông tin đăng nhập</label>
+                    </div>
+                    <a href="/forgot-password" style="font-size: em; text-decoration: none; color: #007BFF;">Quên mật khẩu</a>
+                </div> 
+            </div>
+            <button href="/home" type="submit" class="login-btn" style="color:rgb(200, 195, 189);">Đăng nhập</button>
         </form>
+        <p style="color: rgb(200, 195, 189); font-size: 0.9em;">
+            Chưa có tài khoản? 
+            <a href="/register" style="text-decoration: none; color: #007BFF;">Tạo tài khoản</a>
+        </p>        
     </div>
 </body>
 </html>

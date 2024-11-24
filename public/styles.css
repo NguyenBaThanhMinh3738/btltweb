@@ -10,8 +10,8 @@ body {
     height: 100vh;
 }
 
-/* Container của trang đăng nhập */
-.login-container {
+/* Container của trang đăng nhập và đăng ký */
+.login-container, .register-container, .forgot-password-container {
     background-color: #fff;
     padding: 30px;
     border-radius: 10px;
@@ -20,6 +20,7 @@ body {
     text-align: center;
 }
 
+/* Tiêu đề của form */
 .login-container h1 {
     margin-bottom: 20px;
     color: #333;
@@ -44,6 +45,7 @@ body {
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
+    box-sizing: border-box;
 }
 
 .input-group input:focus {
@@ -51,8 +53,8 @@ body {
     outline: none;
 }
 
-/* Nút đăng nhập */
-.login-btn {
+/* Nút đăng nhập và đăng ký, quen mat khau*/
+.login-btn, .register-btn, .forgot-password-btn {
     width: 100%;
     padding: 12px;
     background-color: #007bff;
@@ -64,6 +66,21 @@ body {
     transition: background-color 0.3s;
 }
 
-.login-btn:hover {
+.login-btn:hover, .register-btn:hover, .forgot-password-btn:hover  {
     background-color: #0056b3;
+}
+
+/* Liên kết đăng nhập */
+.login-link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.login-link a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
 }
