@@ -5,7 +5,7 @@ const path = require('path');
 const { sendEmail } = require('../services/emailService');
 
 // Đường dẫn tới file user.json
-const usersFilePath = path.join(__dirname, '../models/user.json');
+const usersFilePath = path.join(__dirname, '..', 'models', 'users.json');
 
 /**
  * Đọc danh sách người dùng từ file user.json
