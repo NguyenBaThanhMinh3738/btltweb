@@ -3,11 +3,17 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const session = require('express-session');
 
+const loginRoute = require('./routes/login');
+const registerRoute = require('./routes/register');
+const forgotPasswordRoute = require('./routes/forgotPassword');
+const resetPasswordRoute = require('./routes/resetPassword');
+
 const app = express();
 const port = 3000;
 
 // Middleware để parse dữ liệu từ form
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Middleware cho session
 app.use(session({
@@ -16,45 +22,36 @@ app.use(session({
     saveUninitialized: true,
 }));
 
+// Middleware xử lý lỗi (nếu có)
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Đã xảy ra lỗi!');
+});
+
 // Sử dụng EJS để render trang
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Mảng lưu trữ tài khoản (thực tế, bạn sẽ lấy từ cơ sở dữ liệu)
-const users = {
-    'user123': 'password123', // Tài khoản mẫu
-};
-
 // Đảm bảo phục vụ các tệp tĩnh (CSS, JS, hình ảnh)
 app.use(express.static(path.join(__dirname, 'public')));  // Thư mục chứa index.html và các tệp tĩnh
 
-// Route cho trang đăng nhập
-app.get('/login', (req, res) => {
-    res.render('login');
+// debug url
+app.use((req, res, next) => {
+    console.log(`Request URL: ${req.url}`);
+    next();
 });
+
+// Route cho trang đăng nhập
+app.use('/login', loginRoute);
 
 // Route cho trang register
-app.get('/register', (req, res) => {
-    res.render('register');
-});
+app.use('/register', registerRoute);
 
 // Route cho trang forgot password
-app.get('/forgot-password', (req, res) => {
-    res.render('forgot-password');
-});
+app.use('/forgotPassword', forgotPasswordRoute);
 
-// Xử lý form đăng nhập
-app.post('/login', (req, res) => {
-    const { username, password } = req.body;
-
-    // Kiểm tra thông tin đăng nhập
-    if (users[username] && users[username] === password) {
-        req.session.user = username;  // Lưu thông tin người dùng vào session
-        res.redirect('/home');  // Chuyển hướng đến trang chủ nếu đăng nhập thành công
-    } else {
-        res.render('login', { error: 'Sai tài khoản hoặc mật khẩu' });  // Hiển thị thông báo lỗi nếu đăng nhập sai
-    }
-});
+// Route cho trang reset password
+app.use('/resetPassword', resetPasswordRoute);
 
 // Route cho trang chủ sau khi đăng nhập
 app.get('/home', (req, res) => {

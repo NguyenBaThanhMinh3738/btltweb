@@ -1,0 +1,22 @@
+[
+  {
+    "username": "user1",
+    "email": "user1@example.com",
+    "password": "hashedPassword1"
+  },
+  {
+    "username": "user2",
+    "email": "user2@example.com",
+    "password": "hashedPassword2"
+  },
+  {
+    "username": "khanh.nn192936",
+    "email": "user5@example.com",
+    "password": "$2b$10$0BwQ8fxXjVIt9HaQZvOsUOzNwlvYqMuC5kAQUB7oO8JKEIezujzzu"
+  },
+  {
+    "username": "khanh.nn192936",
+    "email": "user9@example.com",
+    "password": "$2b$10$qja3Qyjga0RDprerHs4kWefc2HvD/0Nu1MR51Pb5NWIxoED2b.xFG"
+  }
+]
