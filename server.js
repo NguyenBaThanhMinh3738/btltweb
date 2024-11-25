@@ -52,7 +52,7 @@ app.use('/register', registerRoute);
 app.use('/forgotPassword', forgotPasswordRoute);
 
 // Route cho trang reset password
-app.use('/resetPassword', resetPasswordRoute);
+app.use('/', resetPasswordRoute);
 
 // Route cho trang chủ sau khi đăng nhập
 app.get('/home', (req, res) => {

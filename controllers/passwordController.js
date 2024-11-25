@@ -91,7 +91,7 @@ const handleForgotPassword = async (req, res) => {
  * Hiển thị form reset mật khẩu
  */
 const renderResetPasswordPage = (req, res) => {
-    const token = req.query.token;
+    const token = req.query.token; // Lấy token từ query string
 
     // Đọc danh sách người dùng từ file
     const users = readUsers();
