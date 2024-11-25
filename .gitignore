@@ -1,0 +1,43 @@
+# Thư mục Node.js
+node_modules/
+
+# Các tệp log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Thư mục tạm và cache
+*.swp
+*.temp
+*.tmp
+*.log
+*.out
+*.pid
+*.seed
+*.pid.lock
+
+# Các tệp hệ thống
+.DS_Store
+Thumbs.db
+
+# Các tệp môi trường
+.env
+.env.local
+.env.*.local
+
+# Các tệp build
+build/
+dist/
+coverage/
+
+# Tệp lock dependencies
+package-lock.json
+yarn.lock
+
+# Tệp editor settings
+.idea/
+.vscode/
+*.code-workspace
+
+# Tệp hệ thống tạm của Git
+*.orig

@@ -7,6 +7,7 @@ const loginRoute = require('./routes/login');
 const registerRoute = require('./routes/register');
 const forgotPasswordRoute = require('./routes/forgotPassword');
 const resetPasswordRoute = require('./routes/resetPassword');
+const aboutUsRoute = require('./routes/aboutUs');
 
 const app = express();
 const port = 3000;
@@ -65,6 +66,8 @@ app.get('/home', (req, res) => {
         res.redirect('/login');  // Nếu chưa đăng nhập, chuyển hướng về trang đăng nhập
     }
 });
+// Route cho about us
+app.get('/aboutUs', aboutUsRoute);
 
 // Route cho đăng xuất
 app.get('/logout', (req, res) => {

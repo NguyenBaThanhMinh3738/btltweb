@@ -2,7 +2,9 @@
   {
     "username": "user1",
     "email": "user1@example.com",
-    "password": "hashedPassword1"
+    "password": "hashedPassword1",
+    "token": "951c5bcebd6655996cbdd401dc0a2e12e9e7405844dfb17ea864c0de8a6c6cff",
+    "tokenExpiry": 1732553285752
   },
   {
     "username": "user2",
@@ -22,6 +24,13 @@
   {
     "username": "khanh.nn192936",
     "email": "user6@example.com",
-    "password": "$2b$10$m28QstQbbDemm3bEXc6HIuc8bDzc8/ScvxyLr2S0hxP6KMSYEQNvW"
+    "password": "$2b$10$m28QstQbbDemm3bEXc6HIuc8bDzc8/ScvxyLr2S0hxP6KMSYEQNvW",
+    "token": "e7546d76c17ab8fa04531833cced7c88a22b00000438123d1d4a5f6f42650f32",
+    "tokenExpiry": 1732553193876
+  },
+  {
+    "username": "khanh.nn192936",
+    "email": "user7@example.com",
+    "password": "$2b$10$6FZBC.dI3BY7UFSAKowobO.eBeCUp788JdH5hMxrkz0TrHmHImWja"
   }
 ]

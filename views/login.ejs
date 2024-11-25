@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <div class="login-container">
+    <div class="container">
         <h1>Đăng nhập vào Smart Home</h1>
 
         <!-- Hiển thị thông báo lỗi nếu có -->
@@ -33,14 +33,12 @@
                         <input type="checkbox" name="rememberMe" id="rememberMe">
                         <label for="rememberMe" style="font-size: 0.8em; white-space: nowrap;">Ghi nhớ thông tin đăng nhập</label>
                     </div>
-                    <a href="/forgotPassword" style="font-size: em; text-decoration: none; color: #007BFF;">Quên mật khẩu</a>
+                    <p class="link"><a href="/forgotPassword">Quên mật khẩu</a></p>
                 </div> 
             </div>
-            <button href="/home" type="submit" class="login-btn" style="color:rgb(200, 195, 189);">Đăng nhập</button>
+            <button href="/home" type="submit" class="button">Đăng nhập</button>
         </form>
-        <p style="color: rgb(200, 195, 189); font-size: 0.9em;">
-            Chưa có tài khoản? 
-            <a href="/register" style="text-decoration: none; color: #007BFF;">Tạo tài khoản</a>
+        <p class="link">Chưa có tài khoản? <a href="/register">Tạo tài khoản</a>
         </p>        
     </div>
 </body>

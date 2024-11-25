@@ -7,23 +7,30 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* Container của trang đăng nhập, đăng ký, đặt lại mật khẩu */
-.login-container, .register-container, .forgot-password-container, .reset-password-container {
+/* Container của các trang */
+.container {
     background-color: #fff;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     text-align: center;
+    margin: 20px;
 }
 
-/* Tiêu đề của form */
-.login-container h1 {
+/* Tiêu đề chung cho form */
+.h1 {
+    font-family: 'Arial Black', sans-serif;
     margin-bottom: 20px;
     color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 /* Nhóm input */
@@ -36,16 +43,17 @@ body {
     display: block;
     font-size: 14px;
     color: #555;
+    margin-bottom: 5px;
 }
 
 .input-group input {
     width: 100%;
     padding: 10px;
-    margin-top: 5px;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
     box-sizing: border-box;
+    transition: border-color 0.3s;
 }
 
 .input-group input:focus {
@@ -53,8 +61,8 @@ body {
     outline: none;
 }
 
-/* Nút đăng nhập và đăng ký, quên mật khẩu, đặt lại mật khẩu*/
-.login-btn, .register-btn, .forgot-password-btn, .reset-password-btn  {
+/* Các nút hành động */
+.button {
     width: 100%;
     padding: 12px;
     background-color: #007bff;
@@ -63,24 +71,95 @@ body {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s ease-in-out;
 }
 
-.login-btn:hover, .register-btn:hover, .forgot-password-btn:hover, .reset-password-btn:hover  {
+.button:hover {
     background-color: #0056b3;
+    transform: scale(1.02);
 }
 
-/* Liên kết đăng nhập */
-.login-link {
-    text-align: center;
+/* Liên kết */
+.link {
     margin-top: 10px;
+    font-size: 14px;
 }
 
-.login-link a {
-    color: #007BFF;
+.link a {
+    color: #007bff;
     text-decoration: none;
+    transition: color 0.2s;
 }
 
-.login-link a:hover {
+.link a:hover {
     text-decoration: underline;
+    color: #0056b3;
+}
+
+/* Vùng about us */
+.about-section {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #5a6374;
+    color: white;
+}
+
+.about-section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.team {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.team .member {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team .member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.team .member img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.team .member h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.team .member p {
+    color: #333;
+    font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .team {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container {
+        padding: 20px;
+        width: 90%;
+    }
 }
