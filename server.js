@@ -1,85 +1,51 @@
+// Import thư viện cần thiết
 const express = require('express');
-const bodyParser = require('body-parser');
-const path = require('path');
 const session = require('express-session');
+const path = require('path'); // Để xử lý các đường dẫn
 
-const loginRoute = require('./routes/login');
-const registerRoute = require('./routes/register');
-const forgotPasswordRoute = require('./routes/forgotPassword');
-const resetPasswordRoute = require('./routes/resetPassword');
-const aboutUsRoute = require('./routes/aboutUs');
+const authRoutes = require('./routes/auth');
+const homeRoutes = require('./routes/home');
 
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000; // Cổng cho frontend (có thể khác backend)
 
-// Middleware để parse dữ liệu từ form
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// Middleware cho session
+// Cấu hình session
 app.use(session({
-    secret: 'yourSecretKey',  // Mã khóa để mã hóa session
-    resave: false,
-    saveUninitialized: true,
+  secret: 'your_secret_key',  // Mã bí mật để mã hóa session
+  resave: false,  // Không lưu lại session mỗi khi có yêu cầu
+  saveUninitialized: true,  // Lưu session ngay cả khi không có thông tin
+  cookie: { secure: false }  // Thiết lập cookie, secure = true yêu cầu HTTPS
 }));
 
-// Middleware xử lý lỗi (nếu có)
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Đã xảy ra lỗi!');
-});
-
-// Sử dụng EJS để render trang
+// Thiết lập view engine là EJS
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views')); // Đường dẫn chính xác đến thư mục views
 
-// Đảm bảo phục vụ các tệp tĩnh (CSS, JS, hình ảnh)
-app.use(express.static(path.join(__dirname, 'public')));  // Thư mục chứa index.html và các tệp tĩnh
+// Cấu hình thư mục public để chứa các tài nguyên như CSS, JS, hình ảnh
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Middleware để xử lý dữ liệu từ form và JSON
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // debug url
 app.use((req, res, next) => {
-    console.log(`Request URL: ${req.url}`);
-    next();
+  console.log(`Request URL: ${req.url}`);
+  next();
 });
 
-// Route cho trang đăng nhập
-app.use('/login', loginRoute);
+// Route cho trang login, register, forgot password, reset password
+app.use('/', authRoutes);
 
-// Route cho trang register
-app.use('/register', registerRoute);
-
-// Route cho trang forgot password
-app.use('/forgotPassword', forgotPasswordRoute);
-
-// Route cho trang reset password
-app.use('/', resetPasswordRoute);
+// Xử lý route không tồn tại
+app.use((req, res) => {
+  res.status(404).render('404', { message: 'Trang không tồn tại' }); // Tạo file 404.ejs trong thư mục views
+});
 
 // Route cho trang chủ sau khi đăng nhập
-app.get('/home', (req, res) => {
-    
-    // Kiểm tra session để đảm bảo người dùng đã đăng nhập
-    if (req.session.user) {
-        // Chuyển hướng tới index.html từ thư mục public sau khi đăng nhập thành công
-        // res.sendFile(path.join(__dirname, 'public', 'index.ejs'));  // Chuyển hướng đến index.html sau khi đăng nhập
-        res.render(path.join(__dirname, 'public', 'index.ejs'))
-    } else {
-        res.redirect('/login');  // Nếu chưa đăng nhập, chuyển hướng về trang đăng nhập
-    }
-});
-// Route cho about us
-app.get('/aboutUs', aboutUsRoute);
+app.use('/home', homeRoutes);
 
-// Route cho đăng xuất
-app.get('/logout', (req, res) => {
-    req.session.destroy((err) => {
-        if (err) {
-            return res.send('Có lỗi khi đăng xuất');
-        }
-        res.redirect('/login');  // Quay lại trang đăng nhập sau khi đăng xuất
-    });
-});
-
-// Start server
-app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+// Chạy server trên cổng đã chỉ định
+app.listen(PORT, () => {
+  console.log(`Frontend server is running at http://localhost:${PORT}`);
 });

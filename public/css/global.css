@@ -1,0 +1,75 @@
+/* Toàn bộ trang */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-height: 100vh;
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    background: linear-gradient(135deg, #e3f2fd, #ffffff); /* Nền sáng */
+    font-family: 'Arial', sans-serif;
+}
+
+/* Đặt kiểu chữ mặc định */
+h1, p, a, label {
+    margin: 0;
+    padding: 0;
+}
+
+/* Link chung */
+.link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.link a {
+    color: rgb(135, 206, 250);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.link a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* Responsive chung */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        width: 90%;
+    }
+}
+
+/* Thông báo thành công */
+.success {
+    background-color: #4CAF50; /* Màu xanh lá */
+    color: white;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Thông báo lỗi */
+.error {
+    background-color: #f44336; /* Màu đỏ */
+    color: white;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hiệu ứng cho các thông báo khi hover */
+.success:hover, .error:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
